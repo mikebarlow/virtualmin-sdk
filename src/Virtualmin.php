@@ -15,8 +15,8 @@ class Virtualmin extends Object
     {
         $this->setHost($host, $secure);
 
-        $this->user = $user;
-        $this->pass = $pass;
+        $this->data['user'] = $user;
+        $this->data['pass'] = $pass;
     }
 
     /**
