@@ -33,6 +33,6 @@ class Virtualmin extends Object
             $host = $hostBits[1];
         }
 
-        $this->host = (isset($secure) && $secure ? 'https://' : 'http://') . $host;
+        $this->data['host'] = (isset($secure) && $secure ? 'https://' : 'http://') . $host;
     }
 }
