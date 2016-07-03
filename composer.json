@@ -1,0 +1,32 @@
+{
+    "name": "snscripts/virtualmin-sdk",
+    "description": "Unofficial SDK for Virtualmin Control Panel",
+    "keywords": ["Virtualmin", "SDK"],
+    "homepage": "https://github.com/snscripts/virtualmin-sdk",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mike Barlow",
+            "email": "mike@mikebarlow.co.uk",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "guzzlehttp/guzzle": "6.2.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0",
+        "symfony/var-dumper": "3.0.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Snscripts\\Virtualmin\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Snscripts\\Virtualmin\\Tests\\": "tests"
+        }
+    }
+}
