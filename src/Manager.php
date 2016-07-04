@@ -42,7 +42,7 @@ class Manager
     public function __call($name, $params)
     {
         if (! empty($this->actions[$name])) {
-            $this->loadedAction = $this->actions[$name];
+            $this->loadedAction = new $this->actions[$name];
 
             return $this;
         }

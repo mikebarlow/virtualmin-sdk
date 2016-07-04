@@ -9,6 +9,6 @@ class Manager extends BaseManager
      * list all the available actions for this manager
      */
     protected $actions = [
-        'ListPlans' => \Snscripts\Virtualmin\Plans\Actions\ListPlans::class
+        'ListPlans' => '\Snscripts\Virtualmin\Plans\Actions\ListPlans'
     ];
 }
