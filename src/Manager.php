@@ -41,13 +41,59 @@ class Manager
      */
     public function __call($name, $params)
     {
+        // are we loading an action?
         if (! empty($this->actions[$name])) {
             $this->loadedAction = new $this->actions[$name];
 
             return $this;
         }
 
-        $class = get_class($this);
-        throw new \Snscripts\Virtualmin\Exceptions\UnrecognisedAction($name . ' Action is not recognised on ' . $class);
+        // are we loading a method on the action?
+        if (is_object($this->loadedAction) && method_exists($this->loadedAction, $name)) {
+            call_user_func_array(
+                [$this->loadedAction, $name],
+                $params
+            );
+
+            return $this;
+        }
+
+        // still nothing, exception
+        throw new \Snscripts\Virtualmin\Exceptions\UnrecognisedAction($name . ' Action is not recognised on ' . get_class($this));
+    }
+
+    /**
+     * run the loaded action
+     *
+     * @return mixed
+     */
+    public function run()
+    {
+        if (! is_object($this->loadedAction)) {
+            throw new \Snscripts\Virtualmin\Exceptions\NoActionLoaded('No action was loaded for ' . get_class($this));
+        }
+
+        $Query = $this->virtualmin->getHttp();
+
+        // build up the request
+        $results = $Query->request(
+            $this->loadedAction->getMethodType(),
+            $this->virtualmin->buildUrl(
+                $this->loadedAction->getProgramName(),
+                $this->loadedAction->getQueryParams()
+            ),
+            [
+                'auth' => [
+                    $this->virtualmin->user,
+                    $this->virtualmin->pass
+                ]
+            ]
+        );
+
+        if ($results->getStatusCode() === 200) {
+            return $this->loadedAction->processResults($results);
+        }
+
+        // do some kind of error
     }
 }

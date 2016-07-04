@@ -12,7 +12,7 @@ class Virtualmin extends Object
      */
     public function __construct(ClientInterface $http)
     {
-        $this->http = $http;
+        $this->data['http'] = $http;
     }
 
     /**
