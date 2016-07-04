@@ -46,4 +46,23 @@ class Virtualmin extends Object
 
         $this->data['host'] = (isset($secure) && $secure ? 'https://' : 'http://') . $host;
     }
+
+    /**
+     * build up the url to use for query
+     *
+     * @param string $programName
+     * @param array $urlParams
+     *
+     * @return string
+     */
+    public function buildUrl($programName, $urlParams = [])
+    {
+        $url = rtrim($this->data['host'], '/') . '/virtual-server/remote.cgi';
+
+        $urlParams['program'] = $programName;
+        $urlParams['json'] = 1;
+        $urlParams['multiline'] = '';
+
+        return $url . '?' . http_build_query($urlParams);
+    }
 }
