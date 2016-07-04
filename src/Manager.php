@@ -47,7 +47,7 @@ class Manager
             return $this;
         }
 
-        $class = static::class;
+        $class = get_class($this);
         throw new \Snscripts\Virtualmin\Exceptions\UnrecognisedAction($name . ' Action is not recognised on ' . $class);
     }
 }

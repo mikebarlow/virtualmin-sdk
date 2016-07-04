@@ -1,5 +1,5 @@
 <?php
-namespace \Snscripts\Virtualmin;
+namespace Snscripts\Virtualmin;
 
 interface ActionInterface
 {
