@@ -47,7 +47,7 @@ class Object
     }
 
     /**
-     * function overloading to allow twig to access the attributes
+     * function overloading to allow dynamic get / set
      *
      * @param string $name method name we are trying to load
      * @param array $params array of params to pass to the method

@@ -6,6 +6,7 @@ use Snscripts\Virtualmin\Virtualmin;
 class Manager
 {
     protected $virtualmin;
+    protected $loadedAction;
 
     /**
      * setup and store the virtualmin details
@@ -29,5 +30,24 @@ class Manager
         $this->virtualmin = $virtualmin;
 
         return $this;
+    }
+
+    /**
+     * function overloading to allow loading of actions
+     *
+     * @param string $name method name we are trying to load
+     * @param array $params array of params to pass to the method
+     * @return self $$this return current object
+     */
+    public function __call($name, $params)
+    {
+        if (! empty($this->actions[$name])) {
+            $this->loadedAction = $this->actions[$name];
+
+            return $this;
+        }
+
+        $class = static::class;
+        throw new \Snscripts\Virtualmin\Exceptions\UnrecognisedAction($name . ' Action is not recognised on ' . $class);
     }
 }
