@@ -91,7 +91,7 @@ class Manager
         );
 
         if ($results->getStatusCode() === 200) {
-            return $this->loadedAction->processResults($results);
+            return $this->loadedAction->processResults($results->getBody());
         }
 
         // do some kind of error
