@@ -3,7 +3,7 @@ namespace Snscripts\Virtualmin\Plans\Actions;
 
 use Snscripts\Virtualmin\AbstractAction;
 
-class ListPlans implements AbstractAction
+class ListPlans extends AbstractAction
 {
     /**
      * return the method type to use
