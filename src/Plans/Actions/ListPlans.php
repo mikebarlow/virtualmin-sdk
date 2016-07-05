@@ -43,7 +43,7 @@ class ListPlans extends AbstractAction
      */
     public function processResults($results)
     {
-        $Collection = new \Cake\Collection\Collection;
+        $Collection = new \Cake\Collection\Collection([]);
 
         if ($this->validateResults($results)) {
             foreach ($results['data'] as $item) {
