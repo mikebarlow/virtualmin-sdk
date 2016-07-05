@@ -76,24 +76,33 @@ class Manager
         $Query = $this->virtualmin->getHttp();
 
         // build up the request
-        $results = $Query->request(
-            $this->loadedAction->getMethodType(),
-            $this->virtualmin->buildUrl(
-                $this->loadedAction->getProgramName(),
-                $this->loadedAction->getQueryParams()
-            ),
-            [
-                'auth' => [
-                    $this->virtualmin->user,
-                    $this->virtualmin->pass
-                ]
-            ]
+        $queryUrl = $this->virtualmin->buildUrl(
+            $this->loadedAction->getProgramName(),
+            $this->loadedAction->getQueryParams()
         );
+
+        try {
+            $results = $Query->request(
+                $this->loadedAction->getMethodType(),
+                $queryUrl,
+                [
+                    'auth' => [
+                        $this->virtualmin->getUser(),
+                        $this->virtualmin->getPass()
+                    ]
+                ]
+            );
+        } catch (\Exception $e) {
+            // throw our own exception here
+            throw new \Snscripts\Virtualmin\Exceptions\QueryFailed('Query (' . $queryUrl . ') failed, error given as ' . $e->getMessage());
+        }
 
         if ($results->getStatusCode() === 200) {
             return $this->loadedAction->processResults($results->getBody());
         }
 
-        // do some kind of error
+        throw new \Snscripts\Virtualmin\Exceptions\Error(
+            'Query (' . $queryUrl . ') failed due to: ' . $results->getStatusCode() . ': ' . $results->getReasonPhrase()
+        );
     }
 }
