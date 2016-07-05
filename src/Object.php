@@ -6,6 +6,21 @@ class Object
     protected $data;
 
     /**
+     * mass fill data from array
+     *
+     * @param array $data
+     * @return Object $this
+     */
+    public function fill($data)
+    {
+        array_walk($data, function ($value, $key) {
+            $this->data[$key] = $value;
+        });
+
+        return $this;
+    }
+
+    /**
      * Magic Getter method for retrieving object data
      *
      * @param string $var Variable to get
