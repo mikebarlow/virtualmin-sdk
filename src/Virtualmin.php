@@ -5,6 +5,10 @@ use GuzzleHttp\ClientInterface;
 
 class Virtualmin extends Object
 {
+    const
+        VERIFY = true,
+        NOVERIFY = false;
+
     /**
      * set up Virtualmin Config
      *
@@ -13,6 +17,7 @@ class Virtualmin extends Object
     public function __construct(ClientInterface $http)
     {
         $this->data['http'] = $http;
+        $this->data['verify'] = self::VERIFY;
     }
 
     /**
@@ -21,6 +26,8 @@ class Virtualmin extends Object
      * @param string $user The main account username
      * @param string $pass The main account password
      * @param bool $secure Use a secure connection?
+     *
+     * @return Virtualmin $this
      */
     public function setConnection($host, $user, $pass, $secure = true)
     {
@@ -28,6 +35,8 @@ class Virtualmin extends Object
 
         $this->data['user'] = $user;
         $this->data['pass'] = $pass;
+
+        return $this;
     }
 
     /**
@@ -35,6 +44,8 @@ class Virtualmin extends Object
      *
      * @param string $host The virtualmin host
      * @param bool $secure Use a secure connection?
+     *
+     * @return Virtualmin $this
      */
     public function setHost($host, $secure)
     {
@@ -45,6 +56,8 @@ class Virtualmin extends Object
         }
 
         $this->data['host'] = (isset($secure) && $secure ? 'https://' : 'http://') . $host;
+
+        return $this;
     }
 
     /**

@@ -87,10 +87,10 @@ class Manager
                 $queryUrl,
                 [
                     'auth' => [
-                        $this->virtualmin->getUser(),
-                        $this->virtualmin->getPass()
+                        $this->virtualmin->user,
+                        $this->virtualmin->pass
                     ],
-                    'verify' => $this->virtualmin->getVerify()
+                    'verify' => $this->virtualmin->verify
                 ]
             );
         } catch (\Exception $e) {

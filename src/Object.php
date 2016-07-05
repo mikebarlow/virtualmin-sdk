@@ -47,7 +47,7 @@ class Object
      *
      * @param string $var Variable to set
      * @param mixed $value The value to set
-     * @return mixed
+     * @return void
      */
     public function __set($var, $value)
     {
@@ -58,7 +58,6 @@ class Object
         }
 
         $this->data[$var] = $value;
-        return true;
     }
 
     /**
@@ -66,7 +65,7 @@ class Object
      *
      * @param string $name method name we are trying to load
      * @param array $params array of params to pass to the method
-     * @return mixed $result return of the method
+     * @return mixed $result return of the method or the object instance
      */
     public function __call($name, $params)
     {
@@ -80,11 +79,11 @@ class Object
 
             $this->data[$var] = $value;
 
-            return;
+            return $this;
         } elseif (strtolower(substr($name, 0, 3)) === 'get') {
             $var = strtolower(substr($name, 3));
 
-            if (isset($this->data[$var])) {
+            if (array_key_exists($var, $this->data)) {
                 return $this->data[$var];
             }
 
