@@ -55,7 +55,7 @@ class ListPlans extends AbstractAction
                     'disk_space' => $item['values']['server_quota']['0']
                 ]);
 
-                $Collection->append([
+                $Collection = $Collection->append([
                     $Plan->id => $Plan
                 ]);
             }
