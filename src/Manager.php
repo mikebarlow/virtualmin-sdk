@@ -89,7 +89,8 @@ class Manager
                     'auth' => [
                         $this->virtualmin->getUser(),
                         $this->virtualmin->getPass()
-                    ]
+                    ],
+                    'verify' => $this->virtualmin->getVerify()
                 ]
             );
         } catch (\Exception $e) {
@@ -98,7 +99,12 @@ class Manager
         }
 
         if ($results->getStatusCode() === 200) {
-            return $this->loadedAction->processResults($results->getBody());
+            $json = json_decode(
+                $results->getBody()->getContents(),
+                true
+            );
+
+            return $this->loadedAction->processResults($json);
         }
 
         throw new \Snscripts\Virtualmin\Exceptions\Error(
