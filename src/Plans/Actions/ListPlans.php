@@ -2,6 +2,7 @@
 namespace Snscripts\Virtualmin\Plans\Actions;
 
 use Snscripts\Virtualmin\AbstractAction;
+use Snscripts\Virtualmin\Plans\Plan;
 
 class ListPlans extends AbstractAction
 {

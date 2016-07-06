@@ -43,7 +43,7 @@ abstract class AbstractAction
     public function validateResults($results)
     {
         $statusSuccess = isset($results['status']) && $results['status'] === 'success';
-        $commandMatch = isset($results['command']) && $results['command'] === $this->getMethodType();
+        $commandMatch = isset($results['command']) && $results['command'] === $this->getProgramName();
 
         return ($statusSuccess && $commandMatch);
     }
