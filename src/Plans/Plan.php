@@ -1,7 +1,7 @@
 <?php
 namespace Snscripts\Virtualmin\Plans;
 
-use Snscripts\Virtualmin\Object;
+use Snscripts\Virtualmin\Base\Object;
 
 class Plan extends Object
 {

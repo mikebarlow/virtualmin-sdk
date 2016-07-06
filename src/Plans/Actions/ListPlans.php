@@ -1,7 +1,7 @@
 <?php
 namespace Snscripts\Virtualmin\Plans\Actions;
 
-use Snscripts\Virtualmin\AbstractAction;
+use Snscripts\Virtualmin\Base\AbstractAction;
 use Snscripts\Virtualmin\Plans\Plan;
 
 class ListPlans extends AbstractAction

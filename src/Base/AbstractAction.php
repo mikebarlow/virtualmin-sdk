@@ -1,5 +1,5 @@
 <?php
-namespace Snscripts\Virtualmin;
+namespace Snscripts\Virtualmin\Base;
 
 abstract class AbstractAction
 {

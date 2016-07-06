@@ -1,6 +1,7 @@
 <?php
 namespace Snscripts\Virtualmin;
 
+use Snscripts\Virtualmin\Base\Object;
 use GuzzleHttp\ClientInterface;
 
 class Virtualmin extends Object
