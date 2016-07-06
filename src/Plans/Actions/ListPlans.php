@@ -43,7 +43,7 @@ class ListPlans extends AbstractAction
      */
     public function processResults($results)
     {
-        $Collection = new Cartalyst\Collections\Collection;
+        $Collection = new \Cartalyst\Collections\Collection;
 
         if ($this->validateResults($results)) {
             foreach ($results['data'] as $item) {
