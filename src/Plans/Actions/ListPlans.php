@@ -43,7 +43,7 @@ class ListPlans extends AbstractAction
      */
     public function processResults($results)
     {
-        $Collection = new \Cake\Collection\Collection([]);
+        $Collection = new Cartalyst\Collections\Collection;
 
         if ($this->validateResults($results)) {
             foreach ($results['data'] as $item) {
@@ -55,9 +55,10 @@ class ListPlans extends AbstractAction
                     'disk_space' => $item['values']['server_quota']['0']
                 ]);
 
-                $Collection = $Collection->append([
-                    $Plan->id => $Plan
-                ]);
+                $Collection->put(
+                    $Plan->id,
+                    $Plan
+                );
             }
         }
 
