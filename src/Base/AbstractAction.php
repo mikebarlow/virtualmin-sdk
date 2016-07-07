@@ -40,11 +40,20 @@ abstract class AbstractAction
      *
      * @return bool
      */
-    public function validateResults($results)
+    public function validate($results)
     {
-        $statusSuccess = isset($results['status']) && $results['status'] === 'success';
-        $commandMatch = isset($results['command']) && $results['command'] === $this->getProgramName();
+        return isset($results['command']) && $results['command'] === $this->getProgramName();
+    }
 
-        return ($statusSuccess && $commandMatch);
+    /**
+     * successful result
+     *
+     * @param json $results
+     *
+     * @return bool
+     */
+    public function isSuccess($results)
+    {
+        return isset($results['status']) && $results['status'] === 'success';
     }
 }

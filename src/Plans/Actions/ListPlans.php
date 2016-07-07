@@ -46,7 +46,7 @@ class ListPlans extends AbstractAction
     {
         $Collection = new \Cartalyst\Collections\Collection;
 
-        if ($this->validateResults($results)) {
+        if ($this->validate($results) && $this->isSuccess($results)) {
             foreach ($results['data'] as $item) {
                 $Plan = new Plan;
                 $Plan->fill([
