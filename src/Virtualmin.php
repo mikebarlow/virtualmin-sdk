@@ -77,6 +77,10 @@ class Virtualmin extends Object
         $urlParams['json'] = 1;
         $urlParams['multiline'] = '';
 
+        array_walk($urlParams, function (&$value, $key) {
+            $value = str_replace('_', '-', $value);
+        });
+
         return $url . '?' . http_build_query($urlParams);
     }
 }
