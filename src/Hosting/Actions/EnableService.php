@@ -12,7 +12,7 @@ class EnableService extends AbstractAction
      */
     public function getMethodType()
     {
-        return 'get';
+        return 'post';
     }
 
     /**
@@ -22,7 +22,7 @@ class EnableService extends AbstractAction
      */
     public function getProgramName()
     {
-        return 'list-plans';
+        return 'enable-domain';
     }
 
     /**
@@ -32,7 +32,7 @@ class EnableService extends AbstractAction
      */
     public function getQueryParams()
     {
-        return [];
+        return $this->data;
     }
 
     /**
@@ -43,6 +43,23 @@ class EnableService extends AbstractAction
      */
     public function processResults($results)
     {
+        $Result = new Result;
 
+        if ($this->validate($results)) {
+            if ($this->isSuccess($results)) {
+                $Result->setStatus(Result::SUCCESS);
+                $Result->setMessage('Hosting service enabled successfully');
+            } else {
+                if (! empty($results['error'])) {
+                    $Result->setMessage($results['error']);
+                } else {
+                    $Result->setMessage('An unknown error occurred.');
+                }
+            }
+        } else {
+            $Result->setMessage('An invalid request was made.');
+        }
+
+        return $Result;
     }
 }
