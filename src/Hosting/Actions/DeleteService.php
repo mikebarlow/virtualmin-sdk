@@ -2,6 +2,7 @@
 namespace Snscripts\Virtualmin\Hosting\Actions;
 
 use Snscripts\Virtualmin\Base\AbstractAction;
+use Snscripts\Virtualmin\Results\Result;
 
 class DeleteService extends AbstractAction
 {
@@ -12,7 +13,7 @@ class DeleteService extends AbstractAction
      */
     public function getMethodType()
     {
-        return 'get';
+        return 'post';
     }
 
     /**
@@ -22,7 +23,7 @@ class DeleteService extends AbstractAction
      */
     public function getProgramName()
     {
-        return 'list-plans';
+        return 'delete-domain';
     }
 
     /**
@@ -32,7 +33,7 @@ class DeleteService extends AbstractAction
      */
     public function getQueryParams()
     {
-        return [];
+        return $this->data;
     }
 
     /**
@@ -43,6 +44,23 @@ class DeleteService extends AbstractAction
      */
     public function processResults($results)
     {
+        $Result = new Result;
 
+        if ($this->validate($results)) {
+            if ($this->isSuccess($results)) {
+                $Result->setStatus(Result::SUCCESS);
+                $Result->setMessage('Hosting service deleted successfully');
+            } else {
+                if (! empty($results['error'])) {
+                    $Result->setMessage($results['error']);
+                } else {
+                    $Result->setMessage('An unknown error occurred.');
+                }
+            }
+        } else {
+            $Result->setMessage('An invalid request was made.');
+        }
+
+        return $Result;
     }
 }
