@@ -29,7 +29,7 @@ class Object
     public function __get($var)
     {
         // check for a getter method
-        $methodName = 'get' . ucfirst($var);
+        $methodName = 'get' . $this->convertVarToFunc($var);
         if (method_exists($this, $methodName)) {
             return $this->$methodName();
         }
@@ -52,7 +52,7 @@ class Object
     public function __set($var, $value)
     {
         // check for a getter method
-        $methodName = 'set' . ucfirst($var);
+        $methodName = 'set' . $this->convertVarToFunc($var);
         if (method_exists($this, $methodName)) {
             $this->$methodName($value);
         }
@@ -70,7 +70,7 @@ class Object
     public function __call($name, $params)
     {
         if (strtolower(substr($name, 0, 3)) === 'set') {
-            $var = strtolower(substr($name, 3));
+            $var = $this->convertFuncToVar(substr($name, 3));
 
             $value = '';
             if (isset($params['0'])) {
@@ -81,7 +81,7 @@ class Object
 
             return $this;
         } elseif (strtolower(substr($name, 0, 3)) === 'get') {
-            $var = strtolower(substr($name, 3));
+            $var = $this->convertFuncToVar(substr($name, 3));
 
             if (array_key_exists($var, $this->data)) {
                 return $this->data[$var];
@@ -91,5 +91,38 @@ class Object
         }
 
         return false;
+    }
+
+    /**
+     * convert a magic method into a variable name for storing
+     * essential camelCase to snake_case
+     *
+     * @param string $func
+     * @return string $var
+     */
+    public function convertFuncToVar($func)
+    {
+        $var = ltrim(strtolower(preg_replace('/[A-Z]/', '_$0', $func)), '_');
+
+        return $var;
+    }
+
+    /**
+     * convert a variable name into a magic method
+     * essentially snake_case to camelCase
+     *
+     * @param string $func
+     * @return string $var
+     */
+    public function convertVarToFunc($var)
+    {
+        $str = explode('_', strtolower($var));
+        array_walk($str, function (&$value, $key) {
+            $value = ucfirst(strtolower($value));
+        });
+
+        $func = implode('', $str);
+
+        return $func;
     }
 }
