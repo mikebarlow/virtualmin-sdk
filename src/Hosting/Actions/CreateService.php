@@ -2,6 +2,7 @@
 namespace Snscripts\Virtualmin\Hosting\Actions;
 
 use Snscripts\Virtualmin\Base\AbstractAction;
+use Snscripts\Virtualmin\Results\Result;
 
 class CreateService extends AbstractAction
 {
@@ -43,7 +44,7 @@ class CreateService extends AbstractAction
      */
     public function processResults($results)
     {
-        $Result = new \Snscripts\Virtualmin\Results\Result;
+        $Result = new Result;
 
         if ($this->validate($results)) {
             if ($this->isSuccess($results)) {
