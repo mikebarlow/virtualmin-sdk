@@ -2,6 +2,7 @@
 namespace Snscripts\Virtualmin\Hosting\Actions;
 
 use Snscripts\Virtualmin\Base\AbstractAction;
+use Snscripts\Virtualmin\Results\Result;
 
 class DisableService extends AbstractAction
 {
