@@ -92,7 +92,7 @@ class Virtualmin extends Object
     {
         $newUrlParams = [];
         foreach ($urlParams as $key => $value) {
-            $newUrlParams[str_replace('_', '-'. $key)] = $value;
+            $newUrlParams[str_replace('_', '-', $key)] = $value;
         }
 
         return $newUrlParams;
