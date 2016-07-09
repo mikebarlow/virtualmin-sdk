@@ -49,11 +49,10 @@ class Manager
         }
 
         // are we loading a method on the action?
-        if (is_object($this->loadedAction) && method_exists($this->loadedAction, $name)) {
-            call_user_func_array(
-                [$this->loadedAction, $name],
-                $params
-            );
+        if (is_object($this->loadedAction)) {
+            $param = (! empty($params['0'])) ? $params['0'] : '';
+
+            $this->loadedAction->$name($param);
 
             return $this;
         }
