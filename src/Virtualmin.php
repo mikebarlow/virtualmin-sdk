@@ -7,8 +7,10 @@ use GuzzleHttp\ClientInterface;
 class Virtualmin extends Object
 {
     const
-        VERIFY = true,
-        NOVERIFY = false;
+        VERIFY   = true,
+        NOVERIFY = false,
+        SECURE   = true,
+        NOSECURE = false;
 
     /**
      * set up Virtualmin Config
