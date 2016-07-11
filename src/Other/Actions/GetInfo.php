@@ -53,7 +53,7 @@ class GetInfo extends AbstractAction
             array_walk($items, function ($item, $itemKey, &$info) {
                 list($key, $value) = explode(':', $item, 2);
 
-                $info[$key] = $value;
+                $info[trim($key)] = $value;
             }, $info);
 
             $VirtualminServer->fill($info);
