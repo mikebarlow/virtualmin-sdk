@@ -48,12 +48,24 @@ class ListPlans extends AbstractAction
 
         if ($this->validate($results) && $this->isSuccess($results)) {
             foreach ($results['data'] as $item) {
+                if (strtolower($item['values']['maximum_bw']['0']) === 'unlimited') {
+                    $bandwidth = 'Unlimited';
+                } else {
+                    $bandwidth = ($item['values']['maximum_bw']['0'] / 1073741824) . ' GB';
+                }
+
+                if (isset($item['values']['server_quota']['0'])) {
+                    $diskSpace = $item['values']['server_quota']['0'];
+                } else {
+                    $diskSpace = 'Unlimited';
+                }
+
                 $Plan = new Plan;
                 $Plan->fill([
                     'id' => $item['name'],
                     'name' => $item['values']['name']['0'],
-                    'bandwidth' => ($item['values']['maximum_bw']['0'] / 1073741824) . ' GB',
-                    'disk_space' => $item['values']['server_quota']['0']
+                    'bandwidth' => $bandwidth,
+                    'disk_space' => $diskSpace
                 ]);
 
                 $Collection->put(
