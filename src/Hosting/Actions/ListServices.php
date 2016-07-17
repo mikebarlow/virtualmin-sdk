@@ -2,7 +2,7 @@
 namespace Snscripts\Virtualmin\Hosting\Actions;
 
 use Snscripts\Virtualmin\Base\AbstractAction;
-use Snscripts\Virtualmin\Results\Result;
+use Snscripts\Virtualmin\Hosting\Domain;
 
 class ListServices extends AbstractAction
 {
@@ -44,23 +44,36 @@ class ListServices extends AbstractAction
      */
     public function processResults($results)
     {
-        $Result = new Result;
+        $Collection = new \Cartalyst\Collections\Collection;
 
-        if ($this->validate($results)) {
-            if ($this->isSuccess($results)) {
-                $Result->setStatus(Result::SUCCESS);
-                $Result->setMessage('Hosting service enabled successfully');
-            } else {
-                if (! empty($results['error'])) {
-                    $Result->setMessage($results['error']);
-                } else {
-                    $Result->setMessage('An unknown error occurred.');
+        if ($this->validate($results) && $this->isSuccess($results)) {
+            foreach ($results['data'] as $item) {
+                $itemData = [
+                    'name' => $item['name']
+                ];
+
+                foreach ($item['values'] as $key => $value) {
+                    if (count($value) > 1) {
+                        $itemData[$key] = new \Cartalyst\Collections\Collection($value);
+                    } else {
+                        $itemData[$key] = $value['0'];
+                    }
                 }
+
+                $Domain = new Domain;
+                $Domain->fill($itemData);
+
+                $Collection->put(
+                    $Domain->id,
+                    $Domain
+                );
             }
-        } else {
-            $Result->setMessage('An invalid request was made.');
         }
 
-        return $Result;
+        if ($Collection->count() === 1) {
+            return $Collection->first();
+        }
+
+        return $Collection;
     }
 }
