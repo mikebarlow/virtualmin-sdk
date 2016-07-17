@@ -12,6 +12,7 @@ class Manager extends BaseManager
         'CreateService' => '\Snscripts\Virtualmin\Hosting\Actions\CreateService',
         'DeleteService' => '\Snscripts\Virtualmin\Hosting\Actions\DeleteService',
         'EnableService' => '\Snscripts\Virtualmin\Hosting\Actions\EnableService',
-        'DisableService' => '\Snscripts\Virtualmin\Hosting\Actions\DisableService'
+        'DisableService' => '\Snscripts\Virtualmin\Hosting\Actions\DisableService',
+        'ListServices' => '\Snscripts\Virtualmin\Hosting\Actions\ListServices'
     ];
 }
