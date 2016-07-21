@@ -61,6 +61,17 @@ class Object
     }
 
     /**
+     * Magic methods for check items isset / empty
+     *
+     * @param string $var Variable to set
+     * @return bool
+     */
+    public function __isset($var)
+    {
+        return isset($this->data[$var]);
+    }
+
+    /**
      * function overloading to allow dynamic get / set
      *
      * @param string $name method name we are trying to load
