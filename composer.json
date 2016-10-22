@@ -2,7 +2,7 @@
     "name": "snscripts/virtualmin-sdk",
     "description": "Unofficial SDK for Virtualmin Control Panel",
     "keywords": ["Virtualmin", "SDK"],
-    "homepage": "https://github.com/snscripts/virtualmin-sdk",
+    "homepage": "https://github.com/mikebarlow/virtualmin-sdk",
     "license": "MIT",
     "authors": [
         {
