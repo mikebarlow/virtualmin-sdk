@@ -1,9 +1,9 @@
 # Virtualmin Control Panel SDK
 
 [![Author](http://img.shields.io/badge/author-@mikebarlow-red.svg?style=flat-square)](https://twitter.com/mikebarlow)
-[![Source Code](http://img.shields.io/badge/source-snscripts/virtualmin--sdk-brightgreen.svg?style=flat-square)](https://github.com/snscripts/virtualmin-sdk)
-[![Latest Version](https://img.shields.io/github/release/snscripts/virtualmin-sdk.svg?style=flat-square)](https://github.com/snscripts/virtualmin-sdk/releases)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/snscripts/virtualmin-sdk/blob/master/LICENSE)
+[![Source Code](http://img.shields.io/badge/source-snscripts/virtualmin--sdk-brightgreen.svg?style=flat-square)](https://github.com/mikebarlow/virtualmin-sdk)
+[![Latest Version](https://img.shields.io/github/release/mikebarlow/virtualmin-sdk.svg?style=flat-square)](https://github.com/mikebarlow/virtualmin-sdk/releases)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/mikebarlow/virtualmin-sdk/blob/master/LICENSE)
 
 This is a PSR-2 Compliant Unofficial PHP SDK for the Virtualmin control panel which should hopefully make integrating your own systems into Virtualmin a piece of cake!
 
@@ -116,8 +116,8 @@ The Hosting Manager is responsible for handling the "Virtual Servers" or Shared 
 
 ## Contributing
 
-Please see [CONTRIBUTING](https://github.com/snscripts/virtualmin-sdk/blob/master/CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](https://github.com/mikebarlow/virtualmin-sdk/blob/master/CONTRIBUTING.md) for details.
 
 ## License
 
-The MIT License (MIT). Please see [License File](https://github.com/snscripts/virtualmin-sdk/blob/master/LICENSE) for more information.
+The MIT License (MIT). Please see [License File](https://github.com/mikebarlow/virtualmin-sdk/blob/master/LICENSE) for more information.
