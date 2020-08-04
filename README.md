@@ -14,7 +14,7 @@ This is a PSR-2 Compliant Unofficial PHP SDK for the Virtualmin control panel wh
 Virtualmin SDK requires the following:
 
 * "php": ">=5.5.0
-* "guzzlehttp/guzzle": "6.2.*",
+* "guzzlehttp/guzzle": "6.5.*",
 * "cartalyst/collections": "1.1.*"
 
 ## Installation
