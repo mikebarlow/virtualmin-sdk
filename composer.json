@@ -1,19 +1,19 @@
 {
-    "name": "snscripts/virtualmin-sdk",
-    "description": "Unofficial SDK for Virtualmin Control Panel",
+    "name": "arpanadhikari/virtualmin-sdk",
+    "description": "Unofficial SDK for Virtualmin Control Panel. Fork of snscripts/virtualmin-sdk",
     "keywords": ["Virtualmin", "SDK"],
-    "homepage": "https://github.com/mikebarlow/virtualmin-sdk",
+    "homepage": "https://github.com/arpanadhikari/virtualmin-sdk",
     "license": "MIT",
     "authors": [
         {
-            "name": "Mike Barlow",
-            "email": "mike@mikebarlow.co.uk",
+            "name": "Arpan Adhikari",
+            "email": "kcarpan5@gmail.com",
             "role": "Developer"
         }
     ],
     "require": {
         "php": ">=5.5.0",
-        "guzzlehttp/guzzle": "6.2.*",
+        "guzzlehttp/guzzle": "6.5.*",
         "cartalyst/collections": "1.1.*"
     },
     "require-dev": {

@@ -1,9 +1,9 @@
 <?php
 namespace Snscripts\Virtualmin\Results;
 
-use Snscripts\Virtualmin\Base\Object;
+use Snscripts\Virtualmin\Base\VMObject;
 
-class Result extends Object
+class Result extends VMObject
 {
     const SUCCESS = true;
     const FAIL = false;

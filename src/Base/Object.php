@@ -1,7 +1,7 @@
 <?php
 namespace Snscripts\Virtualmin\Base;
 
-class Object
+class VMObject
 {
     protected $data;
 
@@ -9,7 +9,7 @@ class Object
      * mass fill data from array
      *
      * @param array $data
-     * @return Object $this
+     * @return VMObject $this
      */
     public function fill($data)
     {

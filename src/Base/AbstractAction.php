@@ -1,7 +1,7 @@
 <?php
 namespace Snscripts\Virtualmin\Base;
 
-abstract class AbstractAction extends Object
+abstract class AbstractAction extends VMObject
 {
     /**
      * return the method type to use

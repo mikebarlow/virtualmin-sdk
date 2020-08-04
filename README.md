@@ -14,7 +14,7 @@ This is a PSR-2 Compliant Unofficial PHP SDK for the Virtualmin control panel wh
 Virtualmin SDK requires the following:
 
 * "php": ">=5.5.0
-* "guzzlehttp/guzzle": "6.2.*",
+* "guzzlehttp/guzzle": "6.5.*",
 * "cartalyst/collections": "1.1.*"
 
 ## Installation
@@ -23,13 +23,13 @@ Virtualmin SDK requires the following:
 
 Simplest installation is via composer.
 
-    composer require snscripts/virtualmin-sdk 0.*
+    composer require arpanadhikari/virtualmin-sdk 0.*
 
 or adding to your projects `composer.json` file.
 
     {
         "require": {
-            "snscripts/virtualmin-sdk": "1.*"
+            "arpanadhikari/virtualmin-sdk": "1.*"
         }
     }
 
