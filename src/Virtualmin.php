@@ -1,10 +1,10 @@
 <?php
 namespace Snscripts\Virtualmin;
 
-use Snscripts\Virtualmin\Base\Object;
+use Snscripts\Virtualmin\Base\VMObject;
 use GuzzleHttp\ClientInterface;
 
-class Virtualmin extends Object
+class Virtualmin extends VMObject
 {
     const
         VERIFY   = true,
@@ -15,7 +15,7 @@ class Virtualmin extends Object
     /**
      * set up Virtualmin Config
      *
-     * @param Object $http Guzzle Package
+     * @param VMObject $http Guzzle Package
      */
     public function __construct(ClientInterface $http)
     {

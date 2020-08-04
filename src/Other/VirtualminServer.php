@@ -1,8 +1,8 @@
 <?php
 namespace Snscripts\Virtualmin\Other;
 
-use Snscripts\Virtualmin\Base\Object;
+use Snscripts\Virtualmin\Base\VMObject;
 
-class VirtualminServer extends Object
+class VirtualminServer extends VMObject
 {
 }
