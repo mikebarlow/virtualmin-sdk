@@ -23,13 +23,13 @@ Virtualmin SDK requires the following:
 
 Simplest installation is via composer.
 
-    composer require snscripts/virtualmin-sdk 0.*
+    composer require arpanadhikari/virtualmin-sdk 0.*
 
 or adding to your projects `composer.json` file.
 
     {
         "require": {
-            "snscripts/virtualmin-sdk": "1.*"
+            "arpanadhikari/virtualmin-sdk": "1.*"
         }
     }
 
